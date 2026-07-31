@@ -1,6 +1,6 @@
 package com.Lab04Backend.TaskFlow.user.entity;
 
-import com.Lab04Backend.TaskFlow.boards.models.Board;
+import com.Lab04Backend.TaskFlow.boards.entity.Board;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,7 +19,8 @@ import java.util.UUID;
 public class User {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(nullable = false)
     private String name;
@@ -48,8 +49,6 @@ public class User {
 
     @PrePersist
     public void prePersist() {
-
-        this.id = UUID.randomUUID().toString();
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
 

@@ -1,7 +1,7 @@
 package com.Lab04Backend.TaskFlow.boards.dtos;
 
 import com.Lab04Backend.TaskFlow.boards.enums.BoardStatus;
-import com.Lab04Backend.TaskFlow.boards.models.Board;
+import com.Lab04Backend.TaskFlow.boards.entity.Board;
 import com.Lab04Backend.TaskFlow.user.entity.User;
 
 

@@ -2,9 +2,11 @@ package com.Lab04Backend.TaskFlow.user.dtos;
 
 import com.Lab04Backend.TaskFlow.user.entity.User;
 
+import java.util.UUID;
+
 public record UserResponseDTO(
 
-        String id,
+        UUID id,
         String name,
         String email,
         String avatar

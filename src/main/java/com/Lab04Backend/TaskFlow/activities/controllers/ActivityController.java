@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @Tag(name = "Activities")
 @RestController
@@ -25,7 +26,7 @@ public class ActivityController {
 
     @GetMapping("/{userId}")
     public List<ActivityResponseDTO> getLastActivities(
-            @PathVariable String userId) {
+            @PathVariable UUID userId) {
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() ->

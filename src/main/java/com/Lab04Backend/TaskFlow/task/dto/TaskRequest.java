@@ -1,10 +1,13 @@
 package com.Lab04Backend.TaskFlow.task.dto;
 
+import com.Lab04Backend.TaskFlow.boards.entity.Board;
 import com.Lab04Backend.TaskFlow.task.enums.BoardStatus;
 import com.Lab04Backend.TaskFlow.task.enums.Priority;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -28,4 +31,6 @@ public class TaskRequest {
     private Long member;
 
     private String time;
+
+    private UUID boardId;
 }

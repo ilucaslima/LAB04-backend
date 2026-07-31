@@ -1,5 +1,6 @@
 package com.Lab04Backend.TaskFlow.task.entity;
 
+import com.Lab04Backend.TaskFlow.boards.entity.Board;
 import com.Lab04Backend.TaskFlow.task.enums.BoardStatus;
 import com.Lab04Backend.TaskFlow.task.enums.Priority;
 
@@ -29,6 +30,10 @@ public class Task {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Priority priority;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id", nullable = false)
+    private Board board;
 
     @Column(nullable = false)
     private String title;

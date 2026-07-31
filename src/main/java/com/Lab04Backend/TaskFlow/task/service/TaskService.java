@@ -1,5 +1,7 @@
 package com.Lab04Backend.TaskFlow.task.service;
 
+import com.Lab04Backend.TaskFlow.boards.entity.Board;
+import com.Lab04Backend.TaskFlow.boards.repositories.BoardRepository;
 import com.Lab04Backend.TaskFlow.task.dto.TaskRequest;
 import com.Lab04Backend.TaskFlow.task.dto.TaskResponse;
 import com.Lab04Backend.TaskFlow.task.entity.Task;
@@ -14,16 +16,22 @@ import java.time.LocalDateTime;
 public class TaskService {
 
     private final TaskRepository taskRepository;
+    private final BoardRepository boardRepository;
 
-    public TaskService(TaskRepository taskRepository) {
+    public TaskService(TaskRepository taskRepository, BoardRepository boardRepository) {
         this.taskRepository = taskRepository;
+      this.boardRepository = boardRepository;
     }
 
     public TaskResponse create(TaskRequest request) {
+        Board board = boardRepository.findById(request.getBoardId())
+            .orElseThrow(() -> new RuntimeException("Board não encontrado."));
 
-        Task task = TaskMapper.toEntity(request);
+        Task task = TaskMapper.toEntity(request, board);
 
         task = taskRepository.save(task);
+
+        task.setBoard(board);
 
         return TaskMapper.toResponse(task);
     }

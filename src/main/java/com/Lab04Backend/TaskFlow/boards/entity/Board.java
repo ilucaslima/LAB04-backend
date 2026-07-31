@@ -1,6 +1,7 @@
-package com.Lab04Backend.TaskFlow.boards.models;
+package com.Lab04Backend.TaskFlow.boards.entity;
 
 import com.Lab04Backend.TaskFlow.boards.enums.BoardStatus;
+import com.Lab04Backend.TaskFlow.task.entity.Task;
 import com.Lab04Backend.TaskFlow.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -42,6 +43,10 @@ public class Board {
     )
     @Builder.Default
     private List<User> admins = new ArrayList<>();
+
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<Task> tasks = new ArrayList<>();
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)

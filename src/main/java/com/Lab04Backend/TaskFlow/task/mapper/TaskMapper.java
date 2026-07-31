@@ -1,5 +1,6 @@
 package com.Lab04Backend.TaskFlow.task.mapper;
 
+import com.Lab04Backend.TaskFlow.boards.entity.Board;
 import com.Lab04Backend.TaskFlow.task.dto.TaskRequest;
 import com.Lab04Backend.TaskFlow.task.dto.TaskResponse;
 import com.Lab04Backend.TaskFlow.task.entity.Task;
@@ -9,7 +10,7 @@ public class TaskMapper {
     private TaskMapper() {
     }
 
-    public static Task toEntity(TaskRequest request) {
+    public static Task toEntity(TaskRequest request, Board board) {
         return Task.builder()
                 .status(request.getStatus())
                 .priority(request.getPriority())
@@ -17,6 +18,7 @@ public class TaskMapper {
                 .description(request.getDescription())
                 .member(request.getMember())
                 .time(request.getTime())
+                .board(board)
                 .build();
     }
 

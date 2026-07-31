@@ -3,11 +3,12 @@ package com.Lab04Backend.TaskFlow.activities.dtos;
 import com.Lab04Backend.TaskFlow.activities.entity.Activity;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public record ActivityResponseDTO(
 
         String id,
-        String userId,
+        UUID userId,
         String description,
         LocalDateTime createdAt
 
